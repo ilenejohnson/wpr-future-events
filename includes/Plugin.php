@@ -1,0 +1,111 @@
+<?php
+/**
+ * WPR-Future-Events
+ *
+ *
+ * @package   WPR-Future-Events
+ * @author    Ilene Johnson
+ * @license   GPL-3.0
+ * @link      http://ikjweb.com
+ */
+
+namespace Future\WPR;
+
+
+/**
+ * @subpackage Plugin
+ */
+class Plugin {
+
+	/**
+	 * The variable name is used as the text domain when internationalizing strings
+	 * of text. Its value should match the Text Domain file header in the main
+	 * plugin file.
+	 *
+	 * @since    1.0.0
+	 *
+	 * @var      string
+	 */
+	protected $plugin_slug = 'wpr-future-events';
+
+	/**
+	 * Instance of this class.
+	 *
+	 * @since    1.0.0
+	 *
+	 * @var      object
+	 */
+	protected static $instance = null;
+
+	/**
+	 * Setup instance attributes
+	 *
+	 * @since     1.0.0
+	 */
+	private function __construct() {
+		$this->plugin_version = WP_FUTURE_EVENTS_VERSION;
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_common_scripts' ) );
+	}
+    public function register_common_scripts()
+	{
+		wp_enqueue_script( $this->plugin_slug . '-google-api', 'https://apis.google.com/js/api.js' , array( 'jquery' ), $this->version );
+		wp_enqueue_script( $this->plugin_slug . '-moment-script', plugins_url( 'assets/js/moment.js', dirname( __FILE__ ) ), array( 'jquery' ), $this->version );
+		
+	}
+	/**
+	 * Return the plugin slug.
+	 *
+	 * @since    1.0.0
+	 *
+	 * @return    Plugin slug variable.
+	 */
+	public function get_plugin_slug() {
+		return $this->plugin_slug;
+	}
+
+	/**
+	 * Return the plugin version.
+	 *
+	 * @since    1.0.0
+	 *
+	 * @return    Plugin slug variable.
+	 */
+	public function get_plugin_version() {
+		return $this->plugin_version;
+	}
+
+	/**
+	 * Fired when the plugin is activated.
+	 *
+	 * @since    1.0.0
+	 */
+	public static function activate() {
+		add_option( 'wpr_future_events' );
+	}
+
+	/**
+	 * Fired when the plugin is deactivated.
+	 *
+	 * @since    1.0.0
+	 */
+	public static function deactivate() {
+	}
+
+
+	/**
+	 * Return an instance of this class.
+	 *
+	 * @since     1.0.0
+	 *
+	 * @return    object    A single instance of this class.
+	 */
+	public static function get_instance() {
+
+		// If the single instance hasn't been set, set it now.
+		if ( null == self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
+	}
+}

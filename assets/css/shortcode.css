@@ -1,0 +1,17 @@
+
+	
+.wpr-future-shortcode .list-group-item{
+   font-weight:bold;
+   text-transform:uppercase;
+   font-size:1.7em;
+   margin-bottom: 1em;
+   color:#f4a81d;
+}   
+.wpr-future-shortcode .outerContainer{
+	margin-top:1.5em;
+}
+.wpr-future-shortcode .badge{
+	font-size:1.1em;
+	font-weight:600;
+	margin-top:1em;
+}

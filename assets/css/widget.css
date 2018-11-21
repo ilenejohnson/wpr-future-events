@@ -1,0 +1,19 @@
+.wpr-future-event-widget .badge{
+	font-style:italic !important;
+	margin-bottom:2em;
+	 
+}
+.wpr-future-event-widget .badge__time{
+	 font-weight:600;
+}
+.wpr-future-event-widget .outerContainer{
+	margin-top:1.5em;
+}
+.wpr-future-event-widget .list-group-item{
+	font-size:1em;
+	text-decoration: underline;
+		
+}
+.wpr-future-event-widget .container{
+	width:100%;
+}
